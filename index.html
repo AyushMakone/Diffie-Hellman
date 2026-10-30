@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <script>
+      // Dark is the only theme. Pin it before first paint, and overwrite any
+      // 'light' a visitor stored back when the header carried a theme toggle.
+      (function () {
+        try {
+          localStorage.setItem('theme', 'dark');
+        } catch (e) {}
+        document.documentElement.setAttribute('data-theme', 'dark');
+      })();
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="dark light" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🕵️</text></svg>"
+    />
+    <meta
+      name="description"
+      content="Diffie-Hellman Key Exchange Visualizer with MITM Attack Demonstration — A beginner-friendly interactive guide to key exchange, man-in-the-middle attacks, and authentication."
+    />
+    <title>Diffie-Hellman Key Exchange Visualizer with MITM Attack Demonstration</title>
+  </head>
+  <body>
+<style>
+  .cl-topbar {
+    --cl-blue: #3b82f6;
+    --cl-purple: #a855f7;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.75rem clamp(1rem, 3vw, 2.5rem);
+    background: rgba(10, 14, 26, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(139, 92, 246, 0.25);
+    font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  .cl-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+  }
+  .cl-badge {
+    flex: 0 0 auto;
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+    border-radius: 12px;
+    color: #ffffff;
+    font-weight: 800;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 15px rgba(124, 58, 237, 0.35);
+  }
+  .cl-brand-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+  }
+  .cl-title {
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 1.05rem;
+    letter-spacing: 0.02em;
+    background: linear-gradient(90deg, #60a5fa, #c084fc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .cl-sub {
+    color: #94a3b8;
+    font-size: 0.75rem;
+    font-weight: 500;
+  }
+  .cl-nav {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+  .cl-nav-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.45rem 0.85rem;
+    border-radius: 8px;
+    border: 1px solid rgba(96, 165, 250, 0.2);
+    background: rgba(30, 41, 59, 0.6);
+    color: #cbd5e1;
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+  .cl-nav-btn:hover, .cl-nav-btn.active {
+    background: rgba(99, 102, 241, 0.25);
+    border-color: #818cf8;
+    color: #ffffff;
+    box-shadow: 0 0 12px rgba(99, 102, 241, 0.3);
+  }
+  .cl-skip-link {
+    position: absolute;
+    left: 0.5rem;
+    top: -3rem;
+    z-index: 1001;
+    padding: 0.55rem 1rem;
+    border-radius: 0 0 10px 10px;
+    background: #3b82f6;
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 0.8rem;
+    text-decoration: none;
+    transition: top 0.15s ease;
+  }
+  .cl-skip-link:focus {
+    top: 0;
+    outline: 2px solid #a855f7;
+    outline-offset: 2px;
+  }
+  @media (max-width: 768px) {
+    .cl-sub { display: none; }
+    .cl-nav-btn { padding: 0.35rem 0.6rem; font-size: 0.75rem; }
+  }
+  @media (max-width: 520px) {
+    .cl-nav { display: none; }
+  }
+</style>
+<a class="cl-skip-link" href="#app">Skip to content</a>
+<header class="cl-topbar" role="banner" aria-label="Visualizer Header">
+  <a class="cl-brand" href="#overview">
+    <span class="cl-badge">🔐</span>
+    <span class="cl-brand-text">
+      <span class="cl-title">Diffie-Hellman &amp; MITM</span>
+      <span class="cl-sub">Key Exchange Visualizer</span>
+    </span>
+  </a>
+  <nav class="cl-nav" aria-label="Section navigation">
+    <a class="cl-nav-btn" href="#dh-section">1. Diffie-Hellman</a>
+    <a class="cl-nav-btn" href="#mitm-section">2. MITM Attack</a>
+    <a class="cl-nav-btn" href="#comparison-section">3. Comparison</a>
+  </nav>
+</header>
+    <!-- role="main" for accessibility landmark -->
+    <div id="app" role="main"></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
